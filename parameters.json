@@ -1,0 +1,12 @@
+{
+    "models": [
+        {
+            "name": "cGAN_imgSz32_nCh_1.onnx",
+            "num_instances": 20,
+            "input_epsilons": [0.005, 0.01], 
+            "output_epsilons": [0.010, 0.015],
+            "num_latent_sets": [2, 3, 4],
+            "timeout": 900
+        }
+    ]
+}
