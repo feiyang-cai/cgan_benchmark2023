@@ -81,42 +81,6 @@ def save_vnnlib(input_bounds: np.ndarray, output_bounds: np.ndarray, spec_path: 
         f.write(f"))")
         f.write("\n")
 
-def create_instances_csv(num_props: int = 1, path: str = "cgan_instances.csv", epsilons: List[float] = [0.001]):
-
-    """
-    Creates the cgan_instances file.
-
-    Args:
-        num_props:
-            The number of properties.
-        path:
-            The path of the csv file.
-    """
-
-    nets = ["cGAN_imgSz32_nCh_3.onnx"]
-    # nets = ["cGAN_imgSz32_nCh_1.onnx",
-    #         "cGAN_imgSz32_nCh_3.onnx",
-    #         "cGAN_imgSz64_nCh_1.onnx",
-    #         "cGAN_imgSz64_nCh_3.onnx"]
-
-    props = []
-    for eps in epsilons:
-        props += [f"prop_{i}_{eps}.vnnlib" for i in range(num_props)]
-    
-
-    with open(path, "w") as f:
-
-        for net in nets:
-            timeout = 1000
-            # timeout = 1000 if net == "mnist-net_256x2.onnx" else 300
-            for prop in props:
-
-                if net == nets[-1] and prop == props[-1]:
-                    f.write(f"{net},{prop},{timeout}")
-                else:
-                    f.write(f"{net},{prop},{timeout}\n")
-
-
 if __name__ == '__main__':
 
     try:
@@ -158,7 +122,7 @@ if __name__ == '__main__':
             input_epsilon = input_epsilons[epsilon_idx]
             output_epsilon = output_epsilons[epsilon_idx]
             latent_sets_idx = \
-                np.random.choice(range(4), np.random.choice(num_latent_sets).item(), replace=False)
+                np.random.choice(range(4), num_latent_sets[epsilon_idx], replace=False)
             
             c = np.random.uniform(low=0.2, high=0.7, size=(1, ))
             z = np.random.randn(4, )

@@ -6,5 +6,7 @@ IFS=','
 # Read the CSV file line by line
 while read -r onnx vnnlib timeout
 do
-    python -m nnenum.nnenum $onnx $vnnlib $timeout
+    echo "$vnnlib"
+    python3 -m nnenum.nnenum $onnx $vnnlib $timeout
+    echo "--------------"
 done < "$csv_file"
