@@ -37,6 +37,4 @@ The discriminator takes the generated image as input and outputs two values: 1) 
 For verification, we could combine these two components together and set proper verification specifications for input distance, input noise, and predicted distance.
 
 We could also offer several different models with varying architectures (CNN and Transformer) and image sizes (32x32, 64x64) to provide a range of difficulty levels.
-
-Would you be interested in such a cGAN benchmark? We would greatly appreciate any feedback, opinions, and suggestions from both competition organizers and participants.
             
