@@ -17,7 +17,7 @@ pip3 install numpy gdown
 
 Description
 ----------------------
-This is a vnncomp 2023 benchmark for conditional generative adversarial networks (cGANs).
+This is a benchmark of conditional generative adversarial networks (cGANs) for VNNCOMP 2023.
 
 The objective of this cGAN is to generate camera images that contain a vehicle obstacle located at a specific distance in front of the ego vehicle, where the distance is controlled by the input distance condition.
 
