@@ -1,4 +1,4 @@
-# CGAN benchmark for vnncomp2023
+# CGAN benchmark for VNNCOMP 2023
 
 Run
 ----------------------
