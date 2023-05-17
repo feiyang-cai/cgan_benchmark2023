@@ -101,7 +101,7 @@ if __name__ == '__main__':
     if not os.path.exists(vnnlib_folder):
         os.mkdir(vnnlib_folder)
 
-    csv_path = "cgan_instances.csv"
+    csv_path = "instances.csv"
     f = open(csv_path, "w")
 
     json_file = open("parameters.json", "r")
