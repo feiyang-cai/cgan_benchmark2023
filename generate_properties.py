@@ -3,6 +3,7 @@ from typing import List
 import numpy as np
 import os
 import json
+import zipfile
 
 def create_input_bounds(c: np.ndarray, z: np.ndarray, eps: float, changable_latents_idx: List) -> np.ndarray:
     """
@@ -92,7 +93,8 @@ if __name__ == '__main__':
     filename = "onnx.zip"
     os.system(f"""wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={fileid}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id={fileid}" -O {filename} && rm -rf /tmp/cookies.txt""")
     # upzip the folder
-    os.system(f"""unzip {filename}""")
+    with zipfile.ZipFile(filename, 'r') as zip_ref:
+        zip_ref.extractall('./')
     # remove the zipped folder
     os.system(f"""rm {filename}""")
     
