@@ -1,6 +1,5 @@
 import sys
 from typing import List
-import gdown
 import numpy as np
 import os
 import json
@@ -82,17 +81,23 @@ def save_vnnlib(input_bounds: np.ndarray, output_bounds: np.ndarray, spec_path: 
         f.write("\n")
 
 if __name__ == '__main__':
-
+              
     try:
         np.random.seed(seed=int(sys.argv[1]))
     except (IndexError, ValueError):
         raise ValueError("Expected seed (int) to be given as command line argument")
     
-    # Download google drive folder that contains onnx files
+    # download the zipped folder that contains onnx files from google drive
+    fileid = "1prB3sFTFPrx222ixPkZdCtCdVzIQK2cV"
+    filename = "onnx.zip"
+    os.system(f"""wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={fileid}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id={fileid}" -O {filename} && rm -rf /tmp/cookies.txt""")
+    # upzip the folder
+    os.system(f"""unzip {filename}""")
+    # remove the zipped folder
+    os.system(f"""rm {filename}""")
+    
+
     onnx_folder = "onnx"
-    if not os.path.exists(onnx_folder):
-        url = "https://drive.google.com/drive/folders/1bh5nWgS-s5QPa2LOjQknb7Lki93eja9B"
-        gdown.download_folder(url, quiet=True, use_cookies=False)
     files = os.listdir(onnx_folder)
     assert len(files) == 8, "Expected 8 onnx files in the onnx_files directory"
 

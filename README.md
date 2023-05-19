@@ -11,7 +11,7 @@ Installation and requirement
 ----------------------
 
 ```bash
-pip3 install numpy gdown
+pip3 install numpy
 ```
 
 
