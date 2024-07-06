@@ -4,14 +4,14 @@ Run
 ----------------------
 
 ```bash
-python3 generate_instances.py <seed>
+python generate_instances.py <seed>
 ```
 
 Installation and requirement
 ----------------------
 
 ```bash
-pip3 install numpy
+pip install -r requirements.txt
 ```
 
 
