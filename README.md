@@ -4,7 +4,7 @@ Run
 ----------------------
 
 ```bash
-python generate_instances.py <seed>
+python generate_properties.py <seed>
 ```
 
 Installation and requirement
